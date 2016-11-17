@@ -1,38 +1,32 @@
+[]() FCC Pythia + Delphes + Heppy Analysis
+==========================================================
+
+-   [Overview](#overview)
+-   [Generate and Simulate Events](#generate-events)
+-   [Analyze Events](#analyze-events)
+-   [Plot events](#plot-events)
 
 
-1) Goal:
+[]()Part 0: Overview
+---------------------
+
 
 This tutorial will teach you how to:
 
-- generate signal and background samples with Pythia8 within FCCSW
-- run a fast parametric detector simulation with Delphes within FCCSW
-- apply a event selection on those samples with Heppy
-- produce flat ntuples with observables of interest with Heppy
-- produce pretty plots
+-   generate signal and background samples with Pythia8 within FCCSW
+-   run a fast parametric detector simulation with Delphes within FCCSW
+-   apply a event selection on those samples with Heppy
+-   produce flat ntuples with observables of interest with Heppy
+-   produce plots
 
 
-
-Part I: Install FCCSW 
-----------------------
-
-
-The MC event generator Pythia8 and Delphes detector simulation programs are both included in the FCC software.
-
-First, log into lxplus. Then download and install the FCC software: 
-
-git clone git@github.com:HEP-FCC/FCCSW.git
-cd FCCSW
-source ./init.sh
-make -j 12
-
-
-Part II: Generate and simulate Events
---------------------------------------
+[]()Part I: Generate and simulate Events with FCCSW
+----------------------------------------------------
 
 For this tutorial we will consider the following physics processes: 
 
-p p -> H -> 4 l
-p p -> Z/gamma Z/gamma -> 4 l 
+-   p p -> H -> 4 l
+-   p p -> Z/gamma Z/gamma -> 4 l 
 
 Pythia can be configured to hadronize previously generated hard scattering in the form of Les Houches event files (*.lhe),
 or generate the hard process itself and then run the parton shower and hadronization. In either case, the FCCSW takes
@@ -40,40 +34,56 @@ as input a Pythia8 configuration file (*.cmd), and does not need to know which a
 
 The following commands will run Pythia8/Delphes and produce the relevant signal sample and background samples:
 
+``` {style="padding-left: 30px;"}
 ./run fccrun.py Sim/SimDelphesInterface/options/PythiaDelphes_config.py --inputfile=Generation/data/Pythia_pp_h_4l.cmd --outputfile=pp_h_4l.root --nevents=1000
 ./run fccrun.py Sim/SimDelphesInterface/options/PythiaDelphes_config.py --inputfile=Generation/data/Pythia_pp_zgzg_4l.cmd --outputfile=pp_zgzg_4l.root --nevents=1000
+```
 
-The "--inputfile" , --outputfile and "--nevents" options simply overwrite parameters that are defined in the main configuration "Sim/SimDelphesInterface/options/PythiaDelphes_config.py"
+The `--inputfile` , `--outputfile` and `--nevents` options simply overwrite parameters that are defined in the main configuration "Sim/SimDelphesInterface/options/PythiaDelphes_config.py"
 
-The following information is specified in the configuration file:
+In additon to the workflow, and which collection to be stored in the output tree, the following information is specified in the configuration file:
 
-- Pythia8 configuration file 
-- Delphes detector card
-- number of events
-- name of output file
-- collections to be stored in the output tree. 
+-`             pythiaConfFile            ` --&gt; Pythia8 configuration file 
+-`             delphesCard            ` --&gt;    Delphes detector card
+-`             nEvents            ` --&gt;    number of events
+-`             out.filename            ` --&gt;    name of output file
 
-For a complete discussion on the configuration file, see [this page](). Besides input/output and number of events (which can be specified through command line), 
-for most cases as a user you won't need to apply any change to the config file. 
-
-The output is ROOT file containing a tree in the FCC Event Data Model structure. It is browsable with ROOT:
-
-root -l pp_h_4l.root 
-TBrowser t;
-
-Plotting some basic quantities directly on this output is possible, although not very practical:
-
-events->Draw("sqrt(electrons[0].core.p4.px*electrons[0].core.p4.px + electrons[0].core.p4.py*electrons[0].core.p4.py)")
-
-[plot]
+For a complete discussion on the configuration file, see [this page](https://github.com/HEP-FCC/fcc-tutorials/blob/master/FccPythiaDelphes.md). 
+Besides input/output and number of events (which can be specified through command line), 
+for most cases as a user you won't need to apply more changes to the config file. 
 
 Now overwrite the samples you just produced, with larger samples (10k events) that have been stored in eos.
 
-eos cp ....
+``` {style="padding-left: 30px;"}
+export EOS_MGM_URL="root://eospublic.cern.ch"
+source /afs/cern.ch/project/eos/installation/client/etc/setup.sh
+eos cp /eos/fcc/hh/tutorials/Higgs_4l/pp_h_4l.root .
+eos cp /eos/fcc/hh/tutorials/Higgs_4l/pp_zgzg_4l.root .
+```
 
 
-Part III: Analyze the output with Heppy
-----------------------------------------
+The output is ROOT file containing a tree in the FCC Event Data Model structure. It is browsable with ROOT:
+
+``` {style="padding-left: 30px;"}
+root -l pp_h_4l.root 
+TBrowser t;
+```
+
+Plotting some basic quantities directly on this output is possible, although not very handy:
+
+``` {style="padding-left: 30px;"}
+events->Draw("sqrt(electrons[0].core.p4.px*electrons[0].core.p4.px + electrons[0].core.p4.py*electrons[0].core.p4.py)")
+gPad->SetLogy()
+```
+
+
+https://selvaggi.web.cern.ch/selvaggi/ele1_pt.png
+
+![elept](https://selvaggi.web.cern.ch/selvaggi/ele1_pt.png "ele1_pt.png")
+
+
+[]()Part II: Analyze the output with Heppy
+------------------------------------------
 
 
 [Heppy](https://github.com/cbernet/heppy) is a python framework suitable for analyzing the FCCSW output.
@@ -121,7 +131,7 @@ example/heppy.analyzers.examples.hzz4l.HTo4lGenTreeProducer.HTo4lGenTreeProducer
 example/heppy.analyzers.examples.hzz4l.HTo4lTreeProducer.HTo4lTreeProducer_1/tree.root
 
 
-Part IV: Produce plots
+[]()Part IV: Produce plots
 -----------------------
 
 Download the python code:
@@ -130,6 +140,15 @@ git clone git@github.com:selvaggi/tutorials.git
 
 Produce Gen-level plots:
 
+python tutorials/fcc/createGenHistos.py
+eog plots/lep*.png
+
+Produce Reco-level plots:
+
+python tutorials/fcc/createRecoHistos.py
+eog plots/*_m.png
+
+Appreciate the signal yield for 25 fb-1 of data. Compare with with ATLAS results at 7,8 TeV.
 
 
 
