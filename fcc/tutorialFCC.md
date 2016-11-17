@@ -77,9 +77,7 @@ gPad->SetLogy()
 ```
 
 
-https://selvaggi.web.cern.ch/selvaggi/ele1_pt.png
-
-![elept](https://selvaggi.web.cern.ch/selvaggi/ele1_pt.png "ele1_pt.png")
+![elept](https://selvaggi.web.cern.ch/selvaggi/tutorialele1_pt.png =100x20)
 
 
 []()Part II: Analyze the output with Heppy
