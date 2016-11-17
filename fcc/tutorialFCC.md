@@ -67,6 +67,11 @@ events->Draw("sqrt(electrons[0].core.p4.px*electrons[0].core.p4.px + electrons[0
 
 [plot]
 
+Now overwrite the samples you just produced, with larger samples (10k events) that have been stored in eos.
+
+eos cp ....
+
+
 Part III: Analyze the output with Heppy
 ----------------------------------------
 
@@ -110,13 +115,20 @@ outputs are:
 
 "example/heppy.analyzers.examples.hzz4l.selection.Selection_cuts/cut_flow.txt"
 
-This text files shows efficiencies for various stages of the event selections. The gen and reco output trees:
+The file above shows efficiencies for various stages of the event selections. The gen and reco output trees:
 
 example/heppy.analyzers.examples.hzz4l.HTo4lGenTreeProducer.HTo4lGenTreeProducer_1/tree.root
 example/heppy.analyzers.examples.hzz4l.HTo4lTreeProducer.HTo4lTreeProducer_1/tree.root
 
 
+Part IV: Produce plots
+-----------------------
 
+Download the python code:
+
+git clone git@github.com:selvaggi/tutorials.git
+
+Produce Gen-level plots:
 
 
 

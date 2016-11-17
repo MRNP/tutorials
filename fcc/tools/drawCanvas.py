@@ -94,11 +94,8 @@ def drawStack(name, ylabel, legend, leftText, rightText, format, directory, logY
     for h in hB:
        maxes.append(h.GetMaximum())
     
-    print maxes
-    
     maxh = max(maxes)
-    print maxh
-    
+     
     # define stacked histo
     hStack = ROOT.THStack("hstack","")
     colors = []
@@ -132,7 +129,7 @@ def drawStack(name, ylabel, legend, leftText, rightText, format, directory, logY
     hS.SetLineColor(ROOT.kRed+1)
     hStack.Add(hS)
     
-    hStack.Draw()
+    hStack.Draw("hist")
    
     hStack.GetXaxis().SetTitleFont(font)
     hStack.GetXaxis().SetLabelFont(font)
@@ -158,7 +155,6 @@ def drawStack(name, ylabel, legend, leftText, rightText, format, directory, logY
     legend.Draw() 
     Tleft.Draw() 
     Tright.Draw() 
-    canvas.Write() 
     printCanvas(canvas, name, format, directory) 
 
 

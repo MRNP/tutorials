@@ -5,16 +5,15 @@ import os
 gROOT.SetBatch()
 
 treeName = "events"
-FileS = "../sig_simple/example/heppy.analyzers.examples.hzz4l.HTo4lTreeProducer.HTo4lTreeProducer_1/tree.root"
-FileB = "../bkg_simple/example/heppy.analyzers.examples.hzz4l.HTo4lTreeProducer.HTo4lTreeProducer_1/tree.root"
-outFile = "plots/genPlots.root"
+FileS = "../../pp_h_4l/example/heppy.analyzers.examples.hzz4l.HTo4lTreeProducer.HTo4lTreeProducer_1/tree.root"
+FileB = "../../pp_zgzg_4l/example/heppy.analyzers.examples.hzz4l.HTo4lTreeProducer.HTo4lTreeProducer_1/tree.root"
 
 # number of generated events
 nGenS = 10000
 nGenB = 10000
 
 # integrated luminosity
-intLumi = 3000
+intLumi = 25000
 
 kFactorS = 3.50
 kFactorB = 1.80
@@ -27,9 +26,9 @@ weightS = kFactorS*sigmaS*intLumi/nGenS
 weightB = kFactorB*sigmaB*intLumi/nGenB
 
 Vars = {   
-    "zed1_m":{"name":"zed1_m","title":"m_{ll}^{(1)} [GeV]","bin":25,"xmin":0,"xmax":100},
-    "zed2_m":{"name":"zed2_m","title":"m_{ll}^{(2)} [GeV]","bin":25,"xmin":0,"xmax":100},
-    "higgs_m":{"name":"higgs_m","title":"m_{4l} [GeV]","bin":25,"xmin":70,"xmax":170},
+    "zed1_m":{"name":"zed1_m","title":"m_{ll}^{(1)} [GeV]","bin":36,"xmin":0,"xmax":100},
+    "zed2_m":{"name":"zed2_m","title":"m_{ll}^{(2)} [GeV]","bin":36,"xmin":0,"xmax":100},
+    "higgs_m":{"name":"higgs_m","title":"m_{4l} [GeV]","bin":36,"xmin":70,"xmax":170},
 }
 
 
@@ -41,10 +40,10 @@ treeS = rootFileS.Get(treeName)
 rootFileB = TFile(FileB,"read")
 treeB = rootFileB.Get(treeName)
 
-outRootFile = TFile(outFile,"recreate")
 
 for entry in xrange(treeS.GetEntries()) :
     treeS.GetEntry(entry)
+
     for var in Vars.keys() :
         dict_histoS[var].Fill(getattr(treeS,Vars[var]["name"]))
 
@@ -55,10 +54,10 @@ for entry in xrange(treeB.GetEntries()) :
 
 myBTGStyle()
 
-yAxisLabel = "Events / 4 GeV"
+yAxisLabel = "Events / 2.5 GeV"
 
 rightText = "RECO: Delphes-3.4.0"
-leftText = "#sqrt{s} = 100 TeV, L = 3 fb^{-1}"
+leftText = "#sqrt{s} = 100 TeV, L = 25 fb^{-1}"
 format = "png"
 outputDirectory = "plots" 
 outFile = outputDirectory+"/plots.root"
