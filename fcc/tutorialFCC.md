@@ -102,21 +102,25 @@ Understand the configuration file for this **H->4l analysis**: `heppy/test/analy
 This is where **filters** on input collections and **event selection** are defined.
 The sequence is divided in two parts, a gen level analysis, and a reco level. 
 
-The **gen level analysis** simply filters interesting leptons (`gen_leptons`) and stores pT, eta in in flat tree (`gen_tree`).
+-   The **gen level analysis** simply filters interesting leptons (`gen_leptons`) and stores pT, eta in in flat tree (`gen_tree`).
+
 Have a look at the corresponding code in `heppy/analyzers/examples/hzz4l/HTo4lGenTreeProducer.py`.
 
-The **reco level analysis** first **selects isolated leptons** (`selected_muons`, `selected_electrons`), merges them into a single collection (`selected_leptons`),
+-   The **reco level analysis** first **selects isolated leptons** (`selected_muons`, `selected_electrons`), merges them into a single collection (`selected_leptons`),
 **builds Z candidates** (`zeds`) and finally **builds higgs candidates**  (`higgses`). After that an **event selection** is applied (`selection`).
-Open `heppy/analyzers/examples/hzz4l/selection.py` and understand the event selection. Finally another flat tree is produced `HTo4lTreeProducer`.
+
+Open `heppy/analyzers/examples/hzz4l/selection.py` and understand the event selection. 
+
+Finally another flat tree is produced `HTo4lTreeProducer`.
 This tree contains contains all relevant information for the two reconstructed Z bosons, the Higgs, and the four associated leptons. 
 For comparison, also the MC level counterparts of the reconstructed quantities are plotted. 
 
-To summarize, when designing a new analysis, you will have to define:
+**To summarize, when designing a new analysis, you will have to define:
 
 - a configuration file containing the analysis sequence
 - an event selection
 - one or several tree producer(s) where the variables to be stored in the output tree(s) are specified
-- optionally, new modules that are specific to your analysis (e.g. `LeptonicZedBuilder` here)
+- optionally, new modules that are specific to your analysis (e.g. `LeptonicZedBuilder` here)**
 
 Now run HEPPY:
 
