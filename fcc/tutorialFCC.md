@@ -45,14 +45,14 @@ configuration `Sim/SimDelphesInterface/options/PythiaDelphes_config.py`.
 In additon to the **workflow**, and which **output collections** to be stored in the output tree, the following
 parameters can be specified via the configuration file:
 
-    -   `             nEvents           ` --&gt; number 
-        of events to be simulated
-    -   `             pythiaConfFile           ` --&gt; 
-        Pythia8 configuration file
-    -   `             delphesCard           ` --&gt; 
-        Delphes detector card
-    -   `             out.filename           ` --&gt; 
-        name of output file
+-   `             nEvents           ` --&gt; number 
+    of events to be simulated
+-   `             pythiaConfFile           ` --&gt; 
+    Pythia8 configuration file
+-   `             delphesCard           ` --&gt; 
+    Delphes detector card
+-   `             out.filename           ` --&gt; 
+    name of output file
 
 For a complete discussion on the structure of configuration file, see [this page](https://github.com/HEP-FCC/fcc-tutorials/blob/master/FccPythiaDelphes.md). 
 Aside from I/O and number of events (which can be specified through command line), 
