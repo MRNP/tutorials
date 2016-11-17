@@ -45,11 +45,6 @@ configuration `Sim/SimDelphesInterface/options/PythiaDelphes_config.py`.
 In additon to the **workflow**, and which **output collections** to be stored in the output tree, the following
 parameters can be specified via the configuration file:
 
--`             pythiaConfFile            ` --&gt; Pythia8 configuration file
--`             delphesCard            ` --&gt; Delphes detector card
--`             nEvents            ` --&gt; number of events
--`             out.filename            ` --&gt; name of output file
-
     -   Variables to be set-up:
     -   `             nEvents           ` --&gt; number 
         of events to be simulated
