@@ -56,7 +56,6 @@ def drawDoublehisto(h1, h2, name, ylabel, legend, leftText, rightText, format, d
     legend.Draw() 
     Tleft.Draw() 
     Tright.Draw() 
-    canvas.Write() 
     printCanvas(canvas, name, format, directory) 
 
 # lepPosMiddle[4] = {0.4, 0.4, 0.6, 0.6} 

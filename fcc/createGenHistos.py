@@ -5,8 +5,8 @@ import os
 gROOT.SetBatch()
 
 treeName = "events"
-FileS = "../.root"
-FileB = "../.root"
+FileS = "../../pp_h_4l/example/heppy.analyzers.examples.hzz4l.HTo4lGenTreeProducer.HTo4lGenTreeProducer_1/tree.root"
+FileB = "../../pp_zgzg_4l/example/heppy.analyzers.examples.hzz4l.HTo4lGenTreeProducer.HTo4lGenTreeProducer_1/tree.root"
 
 Vars = {   
     "lep1vsPt_pt":{"name":"lep1vsPt_pt","title":"p_{T}^{(1)} [GeV]","bin":25,"xmin":0,"xmax":100},
@@ -28,8 +28,6 @@ rootFileS = TFile(FileS,"read")
 treeS = rootFileS.Get(treeName)
 rootFileB = TFile(FileB,"read")
 treeB = rootFileB.Get(treeName)
-
-outRootFile = TFile(outFile,"recreate")
 
 for entry in xrange(treeS.GetEntries()) :
     treeS.GetEntry(entry)
