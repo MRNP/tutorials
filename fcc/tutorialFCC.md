@@ -115,12 +115,12 @@ Finally another flat tree is produced `HTo4lTreeProducer`.
 This tree contains contains all relevant information for the two reconstructed Z bosons, the Higgs, and the four associated leptons. 
 For comparison, also the MC level counterparts of the reconstructed quantities are plotted. 
 
-**To summarize, when designing a new analysis, you will have to define:
+To summarize, when designing a new analysis, you will have to define:
 
 - a configuration file containing the analysis sequence
 - an event selection
 - one or several tree producer(s) where the variables to be stored in the output tree(s) are specified
-- optionally, new modules that are specific to your analysis (e.g. `LeptonicZedBuilder` here)**
+- optionally, new modules that are specific to your analysis (e.g. `LeptonicZedBuilder` here)
 
 Now run HEPPY:
 
