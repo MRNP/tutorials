@@ -28,9 +28,9 @@ For this tutorial we will consider the following physics processes:
 -   p p -> H -> 4 l
 -   p p -> Z/gamma Z/gamma -> 4 l 
 
-Pythia can be configured to hadronize previously generated hard scattering in the form of Les Houches event files (*.lhe),
+Pythia can be configured to hadronize previously generated hard scattering in the form of Les Houches event files (.lhe),
 or generate the hard process itself and then run the parton shower and hadronization. In either case, the FCCSW takes
-as input a Pythia8 configuration file (*.cmd), and does not need to know which approach was used.
+as input a Pythia8 configuration file (.cmd), and does not need to know which approach was used.
 
 The following commands will run Pythia8/Delphes and produce the relevant signal sample and background samples:
 
@@ -43,10 +43,10 @@ The `--inputfile` , `--outputfile` and `--nevents` options simply overwrite para
 
 In additon to the workflow, and which collection to be stored in the output tree, the following information is specified in the configuration file:
 
--`             pythiaConfFile            ` --&gt; Pythia8 configuration file 
--`             delphesCard            ` --&gt;    Delphes detector card
--`             nEvents            ` --&gt;    number of events
--`             out.filename            ` --&gt;    name of output file
+-`             pythiaConfFile            ` --&gt; Pythia8 configuration file
+-`             delphesCard            ` --&gt; Delphes detector card
+-`             nEvents            ` --&gt; number of events
+-`             out.filename            ` --&gt; name of output file
 
 For a complete discussion on the configuration file, see [this page](https://github.com/HEP-FCC/fcc-tutorials/blob/master/FccPythiaDelphes.md). 
 Besides input/output and number of events (which can be specified through command line), 
@@ -61,8 +61,7 @@ eos cp /eos/fcc/hh/tutorials/Higgs_4l/pp_h_4l.root .
 eos cp /eos/fcc/hh/tutorials/Higgs_4l/pp_zgzg_4l.root .
 ```
 
-
-The output is ROOT file containing a tree in the FCC Event Data Model structure. It is browsable with ROOT:
+The output is a ROOT file containing a tree in the FCC Event Data Model structure. It is browsable with ROOT:
 
 ``` {style="padding-left: 30px;"}
 root -l pp_h_4l.root 
@@ -76,7 +75,6 @@ events->Draw("sqrt(electrons[0].core.p4.px*electrons[0].core.p4.px + electrons[0
 gPad->SetLogy()
 ```
 
-
 ![elept](https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/ele1_pt.png)
 
 
@@ -88,10 +86,12 @@ gPad->SetLogy()
 
 First install HEPPY:
 
+``` {style="padding-left: 30px;"}
 git clone git@github.com:cbernet/heppy.git
 cd heppy
 source init.sh
 cd ..
+```
  
 Understand the configuration file for this H->4l analysis: "heppy/test/analysis_pp_hTo4l_simple_cfg.py"
 This is where filters on input collections and event selection are defined.
@@ -114,19 +114,19 @@ To summarize, when designing a new analysis, you will have to define:
 - optionally, new modules that are specific to your analysis (e.g. "LeptonicZedBuilder" here)
 
 Now run HEPPY:
-
+``` {style="padding-left: 30px;"}
 heppy_loop.py pp_h_4l heppy/test/analysis_pp_hTo4l_simple_cfg.py -N 1000 -I pp_h_4l.root;
 heppy_loop.py pp_zgzg_4l heppy/test/analysis_pp_hTo4l_simple_cfg.py -N 1000 -I pp_zgzg_4l.root;
-
+```
 The runs create two output directories "pp_h_4l" and "pp_zgzg_4l", with various subdirectories. The most important
 outputs are:
 
-"example/heppy.analyzers.examples.hzz4l.selection.Selection_cuts/cut_flow.txt"
+`example/heppy.analyzers.examples.hzz4l.selection.Selection_cuts/cut_flow.txt`
 
 The file above shows efficiencies for various stages of the event selections. The gen and reco output trees:
 
-example/heppy.analyzers.examples.hzz4l.HTo4lGenTreeProducer.HTo4lGenTreeProducer_1/tree.root
-example/heppy.analyzers.examples.hzz4l.HTo4lTreeProducer.HTo4lTreeProducer_1/tree.root
+`example/heppy.analyzers.examples.hzz4l.HTo4lGenTreeProducer.HTo4lGenTreeProducer_1/tree.root`
+`example/heppy.analyzers.examples.hzz4l.HTo4lTreeProducer.HTo4lTreeProducer_1/tree.root`
 
 
 []()Part IV: Produce plots
@@ -134,24 +134,31 @@ example/heppy.analyzers.examples.hzz4l.HTo4lTreeProducer.HTo4lTreeProducer_1/tre
 
 Download the python code:
 
+``` {style="padding-left: 30px;"}
 git clone git@github.com:selvaggi/tutorials.git
+```
 
 Produce Gen-level plots:
 
+``` {style="padding-left: 30px;"}
 python tutorials/fcc/createGenHistos.py
 eog plots/lep*.png
+```
+
+![lep_pt1](https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/lep1vsPt_pt.png)
+![lep_eta1](https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/lep1vsEta_eta.png)
 
 Produce Reco-level plots:
 
+``` {style="padding-left: 30px;"}
 python tutorials/fcc/createRecoHistos.py
 eog plots/*_m.png
+```
 
-Appreciate the signal yield for 25 fb-1 of data. Compare with with ATLAS results at 7,8 TeV.
+Appreciate the signal yield for 25 fb-1 of data. Compare with with [ATLAS results](https://arxiv.org/pdf/1408.5191v3.pdf) at 7,8 TeV .
 
-
-
-
-
+![higgs_m](https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/higgs_m.png)
+![atlas_higgs_m](https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/m4l_80_170_allYear_125.pdf)
 
 
 
