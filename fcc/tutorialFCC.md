@@ -45,7 +45,6 @@ configuration `Sim/SimDelphesInterface/options/PythiaDelphes_config.py`.
 In additon to the **workflow**, and which **output collections** to be stored in the output tree, the following
 parameters can be specified via the configuration file:
 
-    -   Variables to be set-up:
     -   `             nEvents           ` --&gt; number 
         of events to be simulated
     -   `             pythiaConfFile           ` --&gt; 
