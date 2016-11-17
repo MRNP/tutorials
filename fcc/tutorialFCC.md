@@ -75,7 +75,7 @@ events->Draw("sqrt(electrons[0].core.p4.px*electrons[0].core.p4.px + electrons[0
 gPad->SetLogy()
 ```
 
-<img src="https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/ele1_pt.png" width="48">
+<img src="https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/ele1_pt.png" width="300">
 
 []()Part II: Analyze the output with Heppy
 ------------------------------------------
@@ -144,8 +144,8 @@ python tutorials/fcc/createGenHistos.py
 eog plots/lep*.png
 ```
 
-<img src="https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/lep1vsPt_pt" width="48">
-<img src="https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/lep1vsEta_eta" width="48">
+<img src="https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/lep1vsPt_pt.png" width="300">
+<img src="https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/lep1vsEta_eta.png" width="300">
 
 Produce Reco-level plots:
 
@@ -156,11 +156,8 @@ eog plots/*_m.png
 
 Appreciate the signal yield for 25 fb-1 of data. Compare with with [ATLAS results](https://arxiv.org/pdf/1408.5191v3.pdf) at 7,8 TeV .
 
-![higgs_m](https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/higgs_m.png)
-![atlas_higgs_m](https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/m4l_80_170_allYear_125.pdf)
-
-<img src="https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/higgs_m.png" width="48">
-<img src="https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/m4l_80_170_allYear_125.png" width="48">
+<img src="https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/higgs_m.png" width="300">
+<img src="https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/m4l_80_170_allYear_125.png" width="300">
 
 
 
