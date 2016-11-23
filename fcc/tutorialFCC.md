@@ -5,6 +5,7 @@
 -   [Generate and Simulate Events](#generate-events)
 -   [Analyze Events](#analyze-events)
 -   [Plot events](#plot-events)
+-   [Homework exercise](#homework-exercise)
 
 
 []()Part 0: Overview
@@ -182,6 +183,8 @@ Appreciate the signal yield for **25 fb-1 of data**. Compare with [ATLAS results
 <img src="https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/higgs_m.png" width="400">
 <img src="https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/m4l_80_170_allYear_125.png" width="400">
 
+[]()Part V: Homework
+---------------------
 
 As an exercise you can **re-run the full analysis with the CMS detector configuration**. You should obtain a plot similar to the following:
 
