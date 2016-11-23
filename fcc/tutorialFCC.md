@@ -32,7 +32,7 @@ source ./init.sh
 make -j 12
 ```
 
-For this tutorial we will consider the following physics processes: 
+For this tutorial we will consider the following **physics processes**: 
 
 -   p p -> H -> 4 l
 -   p p -> Z/gamma Z/gamma -> 4 l 
@@ -66,7 +66,7 @@ parameters can be specified via the configuration file:
     name of output file
 
 In this example, Delphes is run on the fly with the baseline FCC-hh detector configuration. 
-Other detector cards can be found in the ```$DELPHES_DIR/cards``` directory, such as a ATLAS, CMS or ILD detector configurations 
+Other detector cards can be found in the ```$DELPHES_DIR/cards``` directory, such as a ATLAS, CMS or ILD detector configurations: 
 ```delphes_card_ATLAS.tcl```, ```delphes_card_CMS.tcl``` and  ```delphes_card_ILD.tcl```. Many of the questions you might have on Delphes Fast Simulation are probably answered
 [here](https://cp3.irmp.ucl.ac.be/projects/delphes/wiki/WorkBook).
 
@@ -125,7 +125,7 @@ Open `heppy/analyzers/examples/hzz4l/selection.py` and understand the event sele
 
 Finally another flat tree is produced `HTo4lTreeProducer`.
 This tree contains contains all relevant information for the two reconstructed Z bosons, the Higgs, and the four associated leptons. 
-For comparison, also the MC level counterparts of the reconstructed quantities are plotted. 
+For comparison, also the MC level counterparts of the reconstructed quantities are stored. 
 
 To summarize, when designing a new analysis, you will have to define:
 
@@ -137,15 +137,15 @@ To summarize, when designing a new analysis, you will have to define:
 Now run HEPPY:
 
 ``` {style="padding-left: 30px;"}
-heppy_loop.py pp_h_4l heppy/test/analysis_pp_hTo4l_simple_cfg.py -N 1000 -I pp_h_4l.root;
-heppy_loop.py pp_zgzg_4l heppy/test/analysis_pp_hTo4l_simple_cfg.py -N 1000 -I pp_zgzg_4l.root;
+heppy_loop.py pp_h_4l heppy/test/analysis_pp_hTo4l_simple_cfg.py -N 10000 -I pp_h_4l.root;
+heppy_loop.py pp_zgzg_4l heppy/test/analysis_pp_hTo4l_simple_cfg.py -N 10000 -I pp_zgzg_4l.root;
 ```
 The runs create two output directories `pp_h_4l` and `pp_zgzg_4l`, with various subdirectories. The breakdown of
 efficiencies by cut can be found in:
 
 `example/heppy.analyzers.examples.hzz4l.selection.Selection_cuts/cut_flow.txt`
 
-The **gen-level** and **reco-level** output trees:
+The **gen-level** and **reco-level** output trees can be found here:
 
 `example/heppy.analyzers.examples.hzz4l.HTo4lGenTreeProducer.HTo4lGenTreeProducer_1/tree.root`
 `example/heppy.analyzers.examples.hzz4l.HTo4lTreeProducer.HTo4lTreeProducer_1/tree.root`
