@@ -187,10 +187,11 @@ As an exercise you can **re-run the full analysis with the CMS detector configur
 
 <img src="https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/higgs_m_cms.png" width="400">
 
-Try to explain:
+By comparing the CMS and FCC Delphes cards, try to explain:
 
--  the event yields difference between 7/8 TeV and 100 TeV (by comparing the official ATLAS plot with the CMS configuration you just ran at 100 TeV)
--  the event yields difference at 100 TeV between the CMS and FCC detector configurations
+-  the **event yields difference between 7/8 TeV and 100 TeV** (by comparing the official ATLAS plot with the CMS configuration you just ran at 100 TeV)
+-  the **event yields difference at 100 TeV** between the CMS and FCC detector configurations
+-  the **difference in the width of Z and H peaks** between the CMS and FCC detector configurations
 
 
 []() Other documentation
