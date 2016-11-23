@@ -23,6 +23,15 @@ This tutorial will teach you how to:
 []()Part I: Generate and simulate Events with FCCSW
 ----------------------------------------------------
 
+First, log into lxplus, and **install the FCC software**:
+
+``` {style="padding-left: 30px;"}
+git clone git@github.com:HEP-FCC/FCCSW.git
+cd FCCSW
+source ./init.sh
+make -j 12
+```
+
 For this tutorial we will consider the following physics processes: 
 
 -   p p -> H -> 4 l
@@ -40,7 +49,9 @@ The following commands will run Pythia8 and Delphes and produce the relevant sig
 ```
 
 The `--inputfile` , `--outputfile` and `--nevents` options simply overwrite parameters that are defined in the main
-configuration `Sim/SimDelphesInterface/options/PythiaDelphes_config.py`.
+configuration `Sim/SimDelphesInterface/options/PythiaDelphes_config.py`. For a complete discussion on the structure of configuration file, see [this page](https://github.com/HEP-FCC/fcc-tutorials/blob/master/FccPythiaDelphes.md). 
+Aside from I/O and number of events (which can be specified through command line), 
+for most use cases as a user you won't need to apply any change to the configuration file. 
 
 In additon to the **workflow**, and which **output collections** to be stored in the output tree, the following
 parameters can be specified via the configuration file:
@@ -54,9 +65,10 @@ parameters can be specified via the configuration file:
 -   `             out.filename           ` --&gt; 
     name of output file
 
-For a complete discussion on the structure of configuration file, see [this page](https://github.com/HEP-FCC/fcc-tutorials/blob/master/FccPythiaDelphes.md). 
-Aside from I/O and number of events (which can be specified through command line), 
-for most use cases as a user you won't need to apply any change to the configuration file. 
+In this example, Delphes is run on the fly with the baseline FCC-hh detector configuration. 
+Other detector cards can be found in the ```$DELPHES_DIR/cards``` directory, such as a ATLAS, CMS or ILD detector configurations 
+```delphes_card_ATLAS.tcl```, ```delphes_card_CMS.tcl``` and  ```delphes_card_ILD.tcl```. Many of the questions you might have on Delphes Fast Simulation are probably answered
+[here](https://cp3.irmp.ucl.ac.be/projects/delphes/wiki/WorkBook).
 
 Now overwrite the samples you just produced, with larger samples (10k events) that have been previously produced and stored in eos.
 
@@ -172,9 +184,16 @@ Appreciate the signal yield for **25 fb-1 of data**. Compare with [ATLAS results
 
 
 
+[]() Other documentation
+------------------------
 
+-   [Submit FCCSW jobs using the condor queue](https://github.com/HEP-FCC/fcc-tutorials/blob/master/FccCondor.md)
+-   [Submit Heppy jobs using the batch queue](https://github.com/HEP-FCC/heppy/blob/master/doc/Heppy_-_Parallel_Processing.md)
+-   [FCCSW webpage](http://fccsw.web.cern.ch/fccsw/index.html)
+-   [Pythia8 manual](http://home.thep.lu.se/~torbjorn/pythia81html/Welcome.html)
+-   [Delphes website](https://cp3.irmp.ucl.ac.be/projects/delphes)
 
-
+------------------------------------------------------------------------
 
 
 
