@@ -183,6 +183,15 @@ Appreciate the signal yield for **25 fb-1 of data**. Compare with [ATLAS results
 <img src="https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/m4l_80_170_allYear_125.png" width="400">
 
 
+As an exercise you can **re-run the full analysis with the CMS detector configuration**. You should obtain a plot similar to the following:
+
+<img src="https://selvaggi.web.cern.ch/selvaggi/tutorialFCC/higgs_m_cms.png" width="400">
+
+Try to explain:
+
+-  the event yields difference between 7/8 TeV and 100 TeV (by comparing the official ATLAS plot with the CMS configuration you just ran at 100 TeV)
+-  the event yields difference at 100 TeV between the CMS and FCC detector configurations
+
 
 []() Other documentation
 ------------------------
